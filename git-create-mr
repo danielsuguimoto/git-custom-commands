@@ -1,5 +1,5 @@
 #!/bin/bash
-# Usage: git create-mr
+# Usage: git create-mr target_branch
 
 if [ -z $1 ]; then
     echo -e "\033[1;31m*** No target  branch name was given!  ***\033[0m"
