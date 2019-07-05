@@ -1,0 +1,28 @@
+#!/bin/bash
+# Usage: git create-branch branch_name
+
+echo
+if [ -z $1 ]; then
+    echo -e "\033[1;31m*** No branch name was given!  ***\033[0m"
+    exit 1
+fi
+
+echo -e "\033[0;33m*** Changing to develop branch ***\033[0m"
+git checkout develop
+
+echo
+echo -e "\033[0;33m*** Resetting develop branch ***\033[0m"
+git reset --hard
+
+echo
+echo -e "\033[0;33m*** Pulling from origin ***\033[0m"
+git pull origin develop
+
+echo
+echo -e "\033[0;33m*** Creating local branch ***\033[0m"
+git checkout -b $1
+
+echo
+echo -e "\033[0;33m*** Pushing new branch to origin ***\033[0m"
+git push -u origin $1
+echo
