@@ -1,0 +1,32 @@
+#!/bin/bash
+# Usage: git update branch_name
+
+echo
+if [ -z $1 ]; then
+    echo -e "\033[1;31m*** No branch name was given!  ***\033[0m"
+    exit 1
+fi
+
+echo -e "\033[0;33m*** Changing to $1 branch ***\033[0m"
+git checkout $1
+
+echo
+echo -e "\033[0;33m*** Resetting branch ***\033[0m"
+git reset --hard
+
+echo
+echo -e "\033[0;33m*** Pulling from origin ***\033[0m"
+git pull origin $1
+
+echo
+echo -e "\033[0;33m*** Fetching from upstream ***\033[0m"
+git fetch upstream $1 -v
+
+echo
+echo -e "\033[0;33m*** Rebasing upstream into local branch ***\033[0m"
+git rebase upstream/$1
+
+echo
+echo -e "\033[0;33m*** Pushing changes to origin ***\033[0m"
+git push
+echo
