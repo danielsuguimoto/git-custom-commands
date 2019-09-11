@@ -1,5 +1,5 @@
 #!/bin/bash
-# Usage: git create-branch branch_name
+# Usage: git create-branch branch_name source_branch
 
 echo
 if [ -z $1 ]; then
@@ -7,16 +7,22 @@ if [ -z $1 ]; then
     exit 1
 fi
 
-echo -e "\033[0;33m*** Changing to develop branch ***\033[0m"
-git checkout develop
+if [ -z $2 ]; then
+    source_branch="."
+else
+    source_branch=$2
+fi
+
+echo -e "\033[0;33m*** Changing to source branch ***\033[0m"
+git checkout $source_branch
 
 echo
-echo -e "\033[0;33m*** Resetting develop branch ***\033[0m"
+echo -e "\033[0;33m*** Resetting source branch ***\033[0m"
 git reset --hard
 
 echo
 echo -e "\033[0;33m*** Pulling from origin ***\033[0m"
-git pull origin develop
+git pull
 
 echo
 echo -e "\033[0;33m*** Creating local branch ***\033[0m"
