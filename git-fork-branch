@@ -1,0 +1,24 @@
+#!/bin/bash
+# Usage: git fork-branch branch_name
+
+echo
+if [ -z $1 ]; then
+    echo -e "\033[1;31m*** No branch name was given!  ***\033[0m"
+    exit 1
+fi
+
+echo -e "\033[0;33m*** Fetching upstream ***\033[0m"
+git fetch upstream -v
+
+echo
+echo -e "\033[0;33m*** Checking out upstream branch ***\033[0m"
+git checkout upstream/$1
+
+echo
+echo -e "\033[0;33m*** Creating new branch locally ***\033[0m"
+git checkout -b $1
+
+echo
+echo -e "\033[0;33m*** Pushing local branch to origin ***\033[0m"
+git push --set-upstream origin $1
+echo
