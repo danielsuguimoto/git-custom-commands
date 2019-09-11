@@ -16,11 +16,11 @@ git reset --hard
 
 echo
 echo -e "\033[0;33m*** Pulling from origin ***\033[0m"
-git pull origin $1
+git pull
 
 echo
 echo -e "\033[0;33m*** Fetching from upstream ***\033[0m"
-git fetch upstream $1 -v
+git fetch upstream -v
 
 echo
 echo -e "\033[0;33m*** Rebasing upstream into local branch ***\033[0m"
