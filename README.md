@@ -16,7 +16,9 @@ Now you can run the new git custom command in your repository! Just type 'git co
 ## git-create-branch
 It creates a new branch from the current branch or from the branch passed as parameter
 
-**Usage:** `git create-branch {new_branch_name}` to create a new branch from your current one, or `git create-branch {new_branch_name} {source_branch_name}` to specific the source branch
+**Usage:** 
+* `git create-branch {new_branch_name}` to create a new branch from your current one;
+* `git create-branch {new_branch_name} {source_branch_name}` to specific the source branch
 
 ## git-fork-branch
 It pushes a new branch from the forked repo into yours.
