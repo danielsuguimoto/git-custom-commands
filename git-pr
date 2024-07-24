@@ -1,0 +1,6 @@
+#!/bin/sh
+
+SOURCE=$(git rev-parse --abbrev-ref HEAD)
+REPO=$(git remote get-url origin | sed 's/^.*://;s/.git$//')
+
+open "https://github.com/$REPO/pull/new/$SOURCE"

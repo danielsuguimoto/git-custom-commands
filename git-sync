@@ -1,0 +1,4 @@
+#!/bin/sh
+
+git fetch
+git symbolic-ref --short refs/remotes/origin/HEAD | xargs git rebase
