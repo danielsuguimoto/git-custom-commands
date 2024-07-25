@@ -16,9 +16,6 @@ else
 fi
 
 git checkout $source_branch
-git add --all
-git stash
 git pull
 git checkout -b $target_branch
 git push -u origin $target_branch
-git stash pop
