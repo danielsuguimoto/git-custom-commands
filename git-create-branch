@@ -1,10 +1,12 @@
-#!/bin/bash
+#!/bin/sh
 # Usage: git create-branch branch_name source_branch
 
 echo
 if [ -z $1 ]; then
     echo -e "\033[1;31m*** No branch name was given!  ***\033[0m"
     exit 1
+else
+    target_branch=$1
 fi
 
 if [ -z $2 ]; then
@@ -13,22 +15,10 @@ else
     source_branch=$2
 fi
 
-echo -e "\033[0;33m*** Changing to source branch ***\033[0m"
 git checkout $source_branch
-
-echo
-echo -e "\033[0;33m*** Resetting source branch ***\033[0m"
-git reset --hard
-
-echo
-echo -e "\033[0;33m*** Pulling from origin ***\033[0m"
+git add --all
+git stash
 git pull
-
-echo
-echo -e "\033[0;33m*** Creating local branch ***\033[0m"
-git checkout -b $1
-
-echo
-echo -e "\033[0;33m*** Pushing new branch to origin ***\033[0m"
-git push -u origin $1
-echo
+git checkout -b $target_branch
+git push -u origin $target_branch
+git stash pop
