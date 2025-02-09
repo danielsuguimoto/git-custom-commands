@@ -1,0 +1,3 @@
+#!/bin/sh
+
+git restore $(git --no-pager diff --name-only | fzf)
