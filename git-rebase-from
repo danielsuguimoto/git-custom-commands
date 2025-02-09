@@ -1,0 +1,3 @@
+#!/bin/sh
+
+git rebase -i $(git --no-pager log --oneline | fzf | awk '{print $1}')
