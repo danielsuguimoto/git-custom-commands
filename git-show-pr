@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -z $1 ]; then
-    gh pr view $(GH_PAGER= gh pr list | fzf | awk '{print $1}') --web
+    gh pr view $(GH_PAGER= gh pr list | fzf --preview 'echo {} | awk "{print \$1}" | xargs gh pr view' | awk '{print $1}') --web
 else
     gh pr view $1 --web
 fi
