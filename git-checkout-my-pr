@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ -z $1 ]; then
+    gh pr checkout $(GH_PAGER= gh pr list -A 'danielsuguimoto' | fzf --preview 'echo {} | awk "{print \$1}" | xargs gh pr view' | awk '{print $1}')
+else
+    gh pr checkout $1
+fi
